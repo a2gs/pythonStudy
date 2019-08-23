@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 
-class sample:
+# Mixed code from https://saralgyaan.com/
+
+import main2
+
+class sample():
 	def __init__(self, _x = 0, _y = ''):
 		self.xxx = _x
 		self.yyy = _y
@@ -31,4 +35,5 @@ def main():
 	print(f'Main function: a = [{a.x}, {a.y!r}] | b = [{b.x}, {b.y!r}] | b = [{c.x}, {c.y!r}]')
 
 if __name__ == "__main__":
+	print(f'The name of module two is {__name__}')
 	main()
