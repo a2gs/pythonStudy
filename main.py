@@ -3,6 +3,8 @@
 # Mixed code from https://saralgyaan.com/
 
 import main2
+import module111
+from module222.m222func import m2func
 
 class sample():
 	def __init__(self, _x = 0, _y = ''):
@@ -29,10 +31,14 @@ def main():
 	b = sample()
 	c = sample(10, 'abc')
 
+	m1cinst = module111.m1c()
+
 	b.x = 13
 	b.y = 'xyz'
 
 	print(f'Main function: a = [{a.x}, {a.y!r}] | b = [{b.x}, {b.y!r}] | b = [{c.x}, {c.y!r}]')
+
+	m2func()
 
 if __name__ == "__main__":
 	print(f'The name of module two is {__name__}')
