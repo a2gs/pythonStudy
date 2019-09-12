@@ -2,7 +2,7 @@
 Code studying python<br>
 <br>
 <br>
->>> import this<br>
+\>\>\> import this<br>
 The Zen of Python, by Tim Peters<br>
 <br>
 Beautiful is better than ugly.<br>
