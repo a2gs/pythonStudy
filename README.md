@@ -1,7 +1,7 @@
 # pythonStudy
 Code studying python<br>
-help(*\<class\>*) # to list doc_here<br>
-dir(*\<class\>*) # to list members/attributes<br>
+help(*\<function/class\>*) # to list doc_here<br>
+dir(*\<function/class\>*) # to list members/attributes<br>
 <br>
 \>\>\> import this<br>
 The Zen of Python, by Tim Peters<br>
