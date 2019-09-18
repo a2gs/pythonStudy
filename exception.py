@@ -15,21 +15,46 @@ class myExcept_2(myBaseException):
 		super().__init__(8, "except 2")
 
 def func(b):
-	if(b == True):
+	if(b == 1):
 		raise myExcept_1
-	else:
+	elif(b == 2):
 		raise myExcept_2
+	elif(b == 3):
+		return
 
 try:
-	func(True)
+	func(1)
 except myExcept_1 as e:
 	print(f'Erro numeber: {e.err} message: {e.msg}')
 except myExcept_2 as e:
 	print(f'Erro numeber: {e.err} message: {e.msg}')
+else:
+	print('No exception')
+finally:
+	print('Do this')
+
+print('Done1\n--------------------')
 
 try:
-	func(False)
+	func(2)
 except myExcept_1 as e:
 	print(f'Erro numeber: {e.err} message: {e.msg}')
 except myExcept_2 as e:
 	print(f'Erro numeber: {e.err} message: {e.msg}')
+else:
+	print('No exception')
+finally:
+	print('Do this')
+
+print('Done2\n--------------------')
+
+try:
+	func(3)
+except myExcept_1 as e:
+	print(f'Erro numeber: {e.err} message: {e.msg}')
+except myExcept_2 as e:
+	print(f'Erro numeber: {e.err} message: {e.msg}')
+else:
+	print('No exception')
+finally:
+	print('Do this')
