@@ -23,10 +23,10 @@ def parent(num):
 	def first_child(): #inner parent function
 		return "aaa"
 
-	def second_child():
+	def second_child(): #inner parent function
 		return "bbb"
 
-	if num == 1: #inner parent function
+	if num == 1:
 		return first_child
 	else:
 		return second_child
