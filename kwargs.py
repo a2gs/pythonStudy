@@ -54,11 +54,14 @@ func(1, 'asd', 13.8, 'qwe', 'zxc', p = 10, q = 100)
 
 print('4 ---------------')
 print('Unpacking \'*\' and \'**\':')
-l = ['asd', 'qwe', 'zxc', 'wer']
+l1 = ['asd', 'qwe', 'zxc', 'wer']
+l2 = [*"Andre Augusto Giannotti Scota"]
 d1 = {'a' : 10, 'b' : 100, 'c' : 1000, 'd' : 10000}
 d2 = {'x' : -1, 'y' : -10}
 d = {**d1, **d2}
-print(*l)
+
+print(*l1)
 print(*d1)
 print(*d2)
 print(*d)
+print(l2)
