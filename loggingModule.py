@@ -20,6 +20,9 @@ func()
 logging.shutdown()
 
 # Log rotation:
+#
+# from logging.handlers import RotatingFileHandler
+#
 # logging.basicConfig(
 # 	handlers=[RotatingFileHandler('./my_log.log', maxBytes=200000, backupCount=2)],
 # 	level=logging.DEBUG,
