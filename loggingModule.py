@@ -18,3 +18,10 @@ def func():
 logging.basicConfig(filename='log.text', filemode='a', level=logging.DEBUG, format='%(asctime)s %(msecs)d - %(process)d - %(levelname)s - %(filename)s:%(funcName)s:%(lineno)d - %(message)s', datefmt='%Y%m%d %H%M%S')
 func()
 logging.shutdown()
+
+# Log rotation:
+# logging.basicConfig(
+# 	handlers=[RotatingFileHandler('./my_log.log', maxBytes=200000, backupCount=2)],
+# 	level=logging.DEBUG,
+# 	format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
+# 	datefmt='%Y-%m-%dT%H:%M:%S')
