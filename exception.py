@@ -25,35 +25,35 @@ def func(b):
 try:
 	func(1)
 except myExcept_1 as e:
-	print(f'Erro numeber: {e.err} message: {e.msg}')
+	print(f'Erro number: {e.err} message: {e.msg}')
 except myExcept_2 as e:
-	print(f'Erro numeber: {e.err} message: {e.msg}')
+	print(f'Erro number: {e.err} message: {e.msg}')
 else:
 	print('No exception')
 finally:
 	print('Do this')
 
-print('Done1\n--------------------')
+print('Done1\n----------------------------------------')
 
 try:
 	func(2)
 except myExcept_1 as e:
-	print(f'Erro numeber: {e.err} message: {e.msg}')
+	print(f'Erro number: {e.err} message: {e.msg}')
 except myExcept_2 as e:
-	print(f'Erro numeber: {e.err} message: {e.msg}')
+	print(f'Erro number: {e.err} message: {e.msg}')
 else:
 	print('No exception')
 finally:
 	print('Do this')
 
-print('Done2\n--------------------')
+print('Done2\n----------------------------------------')
 
 try:
 	func(3)
 except myExcept_1 as e:
-	print(f'Erro numeber: {e.err} message: {e.msg}')
+	print(f'Erro number: {e.err} message: {e.msg}')
 except myExcept_2 as e:
-	print(f'Erro numeber: {e.err} message: {e.msg}')
+	print(f'Erro number: {e.err} message: {e.msg}')
 else:
 	print('No exception')
 finally:
