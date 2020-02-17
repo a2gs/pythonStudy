@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# https://realpython.com/async-io-python/ + myself modifications
+
+import asyncio
+import random
+
+# ANSI colors
+c = (
+    "\033[0m",   # End of color
+    "\033[36m",  # Cyan
+    "\033[91m",  # Red
+    "\033[35m",  # Magenta
+)
+
+async def makerandom(idx: int, threshold: int = 6) -> int:
+	i = random.randint(0, 10)
+	print(c[idx + 1] + f"Initiated makerandom({idx}): comparing {i} and {threshold}.")
+	while i <= threshold:
+		print(c[idx + 1] + f"makerandom({idx}): {i} <= {threshold}, then retrying.")
+		await asyncio.sleep(idx + 1)
+		i = random.randint(0, 10)
+	print(c[idx + 1] + f"---> Finished: makerandom({idx}): {i} > {threshold}" + c[0])
+	return i
+
+async def main():
+	res = await asyncio.gather(*(makerandom(i, 10 - i - 1) for i in range(3)))
+	return res
+
+if __name__ == "__main__":
+	random.seed(444)
+	r0, r1, r2 = asyncio.run(main())
+	print()
+	print(f"r0: {r0}, r1: {r1}, r2: {r2}")
