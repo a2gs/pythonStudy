@@ -20,5 +20,15 @@ class myIter:
 		else:
 			raise StopIteration
 
+print('------')
+
 for i in myIter(5):
 	print(i)
+
+print('------\nITER()')
+
+m = myIter(7)
+mi = iter(m)
+
+for i in range(10):
+	print(next(mi))
