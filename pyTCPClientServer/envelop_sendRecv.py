@@ -15,40 +15,140 @@ class connection:
 		self.servsock = 0
 		self.clientsock = 0
 
-	def serverLoad(self, family, socktype):
-		self.servsock = socket.socket(family, socktype)
+	def serverLoad(self, family, socktype)->[bool, str]:
+		try:
+			self.servsock = socket.socket(family, socktype)
+		except OSError as e:
+			return([False, f"{e.errno} {e.strerror}"])
+		except KeyboardInterrupt:
+			return([False, "KeyboardInterrupt"])
+		except Exception as e:
+			return([False, e, ""])
+		except BaseException as e:
+			return([False, f"BaseException {str(e)}"])
+		except:
+			return([False, "Unknow exception"])
 
-	def serverBindListen(self, port : int, listen : int):
-		self.servsock.bind((socket.gethostname(), port))
-		self.servsock.listen(listen)
+		return([True, "Ok"])
 
-	def sockOpts(self, opt):
-		self.servsock.setsockopt(socket.SOL_SOCKET, opt, 1)
+	def serverBindListen(self, port : int, listen : int)->[bool, str]:
+		try:
+			self.servsock.bind((socket.gethostname(), port))
+			self.servsock.listen(listen)
+		except OSError as e:
+			return([False, f"{e.errno} {e.strerror}"])
+		except KeyboardInterrupt:
+			return([False, "KeyboardInterrupt"])
+		except Exception as e:
+			return([False, e, ""])
+		except BaseException as e:
+			return([False, f"BaseException {str(e)}"])
+		except:
+			return([False, "Unknow exception"])
 
-	def endServer(self):
-		self.servsock.shutdown(socket.SHUT_RDWR)
+		return([True, "Ok"])
 
-	def endClient(self):
-		self.clientsock.shutdown(socket.SHUT_RDWR)
+	def sockOpts(self, opt)->[bool, str]:
+		try:
+			self.servsock.setsockopt(socket.SOL_SOCKET, opt, 1)
+		except OSError as e:
+			return([False, f"{e.errno} {e.strerror}"])
+		except KeyboardInterrupt:
+			return([False, "KeyboardInterrupt"])
+		except Exception as e:
+			return([False, e, ""])
+		except BaseException as e:
+			return([False, f"BaseException {str(e)}"])
+		except:
+			return([False, "Unknow exception"])
 
-	def serverAccept(self):
-		self.clientsock, address = self.servsock.accept()
-		return address
+		return([True, "Ok"])
 
-	def connectToServer(self, address, port, family, socktype):
-		self.clientsock = socket.socket(family, socktype)
-		self.clientsock.connect((address, port))
+	def endServer(self)->[bool, str]:
+		try:
+			self.servsock.shutdown(socket.SHUT_RDWR)
+		except OSError as e:
+			return([False, f"{e.errno} {e.strerror}"])
+		except KeyboardInterrupt:
+			return([False, "KeyboardInterrupt"])
+		except Exception as e:
+			return([False, e, ""])
+		except BaseException as e:
+			return([False, f"BaseException {str(e)}"])
+		except:
+			return([False, "Unknow exception"])
 
-	def sendMsg(self, msg, szToSend):
+		return([True, "Ok"])
+
+	def endClient(self)->[bool, str]:
+		try:
+			self.clientsock.shutdown(socket.SHUT_RDWR)
+		except OSError as e:
+			return([False, f"{e.errno} {e.strerror}"])
+		except KeyboardInterrupt:
+			return([False, "KeyboardInterrupt"])
+		except Exception as e:
+			return([False, e, ""])
+		except BaseException as e:
+			return([False, f"BaseException {str(e)}"])
+		except:
+			return([False, "Unknow exception"])
+
+		return([True, "Ok"])
+
+	def serverAccept(self)->[bool, str, str]:
+		try:
+			self.clientsock, address = self.servsock.accept()
+		except OSError as e:
+			return([False, f"{e.errno} {e.strerror}", ""])
+		except KeyboardInterrupt:
+			return([False, "KeyboardInterrupt", ""])
+		except Exception as e:
+			return([False, e, ""])
+		except BaseException as e:
+			return([False, f"BaseException {str(e)}", ""])
+		except:
+			return([False, "Unknow exception", ""])
+
+		return([True, "Ok", address])
+
+	def connectToServer(self, address, port, family, socktype)->[bool, str]:
+		try:
+			self.clientsock = socket.socket(family, socktype)
+			self.clientsock.connect((address, port))
+		except OSError as e:
+			return([False, f"{e.errno} {e.strerror}"])
+		except KeyboardInterrupt:
+			return([False, "KeyboardInterrupt"])
+		except Exception as e:
+			return([False, e, ""])
+		except BaseException as e:
+			return([False, f"BaseException {str(e)}"])
+		except:
+			return([False, "Unknow exception"])
+
+		return([True, "Ok"])
+
+	def sendMsg(self, msg, szToSend)->[bool, str]:
 		msgSz = struct.pack('!I', szToSend)
 
 		try:
 			self.clientsock.sendall(msgSz)
 			self.clientsock.sendall(bytes(msg, "utf-8"))
+		except OSError as e:
+			return([False, f"{e.errno} {e.strerror}"])
+		except KeyboardInterrupt:
+			return([False, "KeyboardInterrupt"])
+		except Exception as e:
+			return([False, e, ""])
+		except BaseException as e:
+			return([False, f"BaseException {str(e)}"])
 		except:
-			raise
+			return([False, "Unknow exception"])
 
-	def recvMsg(self):
+		return([True, "Ok"])
+
+	def recvMsg(self) -> str:
 		HEADERSIZE = 4 # struct.pack('!I', szToSend)
 
 		msgSz   = 0

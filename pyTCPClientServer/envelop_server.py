@@ -14,7 +14,7 @@ con.sockOpts(socket.SO_REUSEADDR)
 
 con.serverBindListen(9998, 5)
 
-client = con.serverAccept()
+ret, msgret, client = con.serverAccept()
 
 print(f'Connection from [{client}]')
 
