@@ -45,7 +45,7 @@ if ret == False:
 
 ret, msgret, client = con.serverAccept()
 if ret == False:
-	print(f"aqui1 {msgret} <<<<")
+	print(f"Erro: {retmsg}")
 	exit(1)
 
 print(f'Connection from [{client}]')
