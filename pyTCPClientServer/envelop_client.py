@@ -8,12 +8,24 @@ import envelop_sendRecv
 
 con = envelop_sendRecv.connection()
 
-con.connectToServer(socket.gethostname(), 9998, socket.AF_INET, socket.SOCK_STREAM)
+ret, retmsg = con.connectToServer(socket.gethostname(), 9998, socket.AF_INET, socket.SOCK_STREAM)
+if ret == False:
+	print(f"Erro: {retmsg}")
+	exit(1)
+
 
 msg = 'Ola server!'
-con.sendMsg(msg, len(msg))
+ret, retmsg = con.sendMsg(msg, len(msg))
+if ret == False:
+	print(f"Erro: {retmsg}")
+	exit(1)
 
-msgRecv = con.recvMsg()
+
+ret, retmsg, msgRecv = con.recvMsg()
+if ret == False:
+	print(f"Erro: {retmsg}")
+	exit(1)
+
 
 print(f'Sent: [{msg}] | Received: [{msgRecv}]')
 
